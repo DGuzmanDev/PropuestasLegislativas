@@ -11,7 +11,7 @@ namespace RazorTest.Pages
     [BindProperties]
     public class IndexPageModelModel : PageModel
     {
-        public bool IsPost = false;
+        //public bool IsPost = false;
 
         [Required(ErrorMessage = "El nombre es requerido")]
         [MinLength(3, ErrorMessage = "El nombre del empresa debe ser al menos de 3 caracteres")]
@@ -42,8 +42,8 @@ namespace RazorTest.Pages
         [Required(ErrorMessage = "La provincia es requerida")]
         public String? Provincia { get; set; }
 
-        [Required(ErrorMessage = "El distrito es requerido")]
-        public String? Distrito { get; set; }
+        [Required(ErrorMessage = "El cantón es requerido")]
+        public String? Canton { get; set; }
 
         [Required(ErrorMessage = "La propuesta es requerida")]
         [MinLength(50, ErrorMessage = "La propuesta debe tener al menos 50 caracteres"), MaxLength(200, ErrorMessage = "La propuesta debe tener un maximo un 200 caracteres")]
@@ -52,17 +52,17 @@ namespace RazorTest.Pages
         //[Required, Range(0, 100)]
         //public Int32 Employees { get; set; }
 
-        public void OnGet()
-        {
-        }
+        // public void OnGet()
+        // {
+        // }
 
-        public void OnPost()
-        {
-            String? companyName = Request.Form["companyname"];
-            IsPost = true;
-            //var name = Request.Form["Name"];
-            //var email = Request.Form["Email"];
-            //ViewData["confirmation"] = $"{name}, information will be sent to {email}";
-        }
+        // public void OnPost()
+        // {
+        //     String? companyName = Request.Form["companyname"];
+        //     IsPost = true;
+        //     //var name = Request.Form["Name"];
+        //     //var email = Request.Form["Email"];
+        //     //ViewData["confirmation"] = $"{name}, information will be sent to {email}";
+        // }
     }
 }
