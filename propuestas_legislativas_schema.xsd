@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="nombre" type="xs:string" />
+	<xs:element name="apellidos" type="xs:string" />
+	<xs:element name="identificacion" type="xs:string" />
+	<xs:element name="tipo_identificacion" type="xs:string" />
+	<xs:element name="provincia" type="xs:string" />
+	<xs:element name="canton" type="xs:string" />
+	<xs:element name="distrito" type="xs:string" />
+	<xs:element name="propuesta" type="xs:string" />
+	<xs:element name="propuesta_legislativa">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="nombre" />
+				<xs:element ref="apellidos" />
+				<xs:element ref="identificacion" />
+				<xs:element ref="tipo_identificacion" />
+				<xs:element ref="provincia" />
+				<xs:element ref="canton" />
+				<xs:element ref="distrito" />
+				<xs:element ref="propuesta" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="propuestas_legislativas">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="propuesta_legislativa" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
