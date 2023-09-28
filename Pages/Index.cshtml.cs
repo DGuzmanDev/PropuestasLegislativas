@@ -17,8 +17,8 @@ namespace RazorTest.Pages
         [MinLength(3, ErrorMessage = "El nombre del empresa debe ser al menos de 3 caracteres")]
         public String? Nombre { get; set; }
 
-        [Required(ErrorMessage = "Los apelliods son requeridos")]
-        [MinLength(2, ErrorMessage = "Los apellisdos deben tener al menos 2 caracteres")]
+        [Required(ErrorMessage = "Los apellidos son requeridos")]
+        [MinLength(2, ErrorMessage = "Los apellidos deben tener al menos 2 caracteres")]
         public String? Apellidos { get; set; }
 
         public String[] TiposIdentificacion = { "Nacional", "DIMEX" };
@@ -46,7 +46,8 @@ namespace RazorTest.Pages
         public String? Canton { get; set; }
 
         [Required(ErrorMessage = "La propuesta es requerida")]
-        [MinLength(50, ErrorMessage = "La propuesta debe tener al menos 50 caracteres"), MaxLength(200, ErrorMessage = "La propuesta debe tener un maximo un 200 caracteres")]
+        [MinLength(50, ErrorMessage = "La propuesta debe tener al menos 50 caracteres y máximo 200 caracteres")]
+        [MaxLength(200, ErrorMessage = "La propuesta debe tener un maximo un 200 caracteres")]
         public String? Propuesta { get; set; }
 
         //[Required, Range(0, 100)]

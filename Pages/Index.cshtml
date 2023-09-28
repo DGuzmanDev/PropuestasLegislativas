@@ -3,76 +3,81 @@
 @{
     ViewData["Title"] = "Propuestas Legislativas";
 }
-<!DOCTYPE html>
-<html>
-
-    <head>
-        <title>Formulario de propuesta legislativa</title>
-    </head>
-
-    <body>
-        <form method="post">
-            <fieldset>
-                <legend>Nueva propuesta legislativa</legend>
-                <div>
-                    <label for="Nombre">Nombre:</label>
-                    <input type="text" name="Nombre" asp-for="Nombre" value="" />
-                    <span asp-validation-for="Nombre"></span>
-                </div>
-                <div>
-                    <label for="Apellidos">Apellidos:</label>
-                    <input type="text" name="Apellidos" asp-for="Apellidos" value="" />
-                    <span asp-validation-for="Apellidos"></span>
-                </div>
-                <div>
-                    <label for="TipoIdentificacion">Tipo de Identificacion</label>
-                    <select name="TipoIdentificacion" asp-for="TipoIdentificacion">
-                        @for (int i = 0; i < Model.TiposIdentificacion.Length; i++)
-                    {
-                            <option value="@Model.TiposIdentificacion[i]">@Model.TiposIdentificacion[i]</option>
-                    }
-                    </select>
-                    <span asp-validation-for="TipoIdentificacion"></span>
-                </div>
-                <div>
-                    <label for="Identificacion">Identificacion:</label>
-                    <input type="text" name="Identificacion" asp-for="Identificacion" value="" />
-                    <span asp-validation-for="Identificacion"></span>
-                </div>
-                <div>
-                    <label for="Telefono">Telefono:</label>
-                    <input type="text" name="Telefono" asp-for="Telefono" value="" />
-                    <span asp-validation-for="Telefono"></span>
-                </div>
-                <div>
-                    <label for="Correo">Correo electrónico:</label>
-                    <input type="email" name="Correo" asp-for="Correo" value="" />
-                    <span asp-validation-for="Correo"></span>
-                </div>
-                <div>
-                    <label for="Provincia">Provincia</label>
-                    <select id="Provincia" name="Provincia" asp-for="Provincia">
-                    </select>
-                    <span asp-validation-for="Provincia"></span>
-                </div>
-                <div>
-                    <label for="Canton">Canton</label>
-                    <select name="Canton" id="Canton" asp-for="Canton">
-                    </select>
-                    <span asp-validation-for="Canton"></span>
-                </div>
-                <div>
-                    <label for="Propuesta">Propuesta</label>
-                    <textarea name="Propuesta" asp-for="Propuesta"></textarea>
-                    <span asp-validation-for="Propuesta"></span>
-                </div>
-                <div>
-                    <label>&nbsp;</label>
-                    <input type="submit" value="Submit" class="submit" />
-                </div>
-
-            </fieldset>
-        </form>
-    </body>
-
-</html>
+<section id="formulario">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <form method="post" id="formulario_registro">
+                    <fieldset>
+                        <legend class="my-4">Nueva propuesta legislativa</legend>
+                        <div class="row mb-3">
+                            <label class="form-label" for="Nombre">Nombre:</label>
+                            <input class="form-control" type="text" name="Nombre" asp-for="Nombre" value="" />
+                            <span class="text-danger pt-2" asp-validation-for="Nombre"></span>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="form-label" for="Apellidos">Apellidos:</label>
+                            <input class="form-control" type="text" name="Apellidos" asp-for="Apellidos" value="" />
+                            <span class="text-danger pt-2" asp-validation-for="Apellidos"></span>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="form-label" for="TipoIdentificacion">Tipo de Identificacion</label>
+                            <select class="form-control" name="TipoIdentificacion" asp-for="TipoIdentificacion">
+                                @for (int i = 0; i < Model.TiposIdentificacion.Length; i++)
+                                {
+                                    <option value="@Model.TiposIdentificacion[i]">@Model.TiposIdentificacion[i]
+                                    </option>
+                                }
+                            </select>
+                            <span class="text-danger pt-2" asp-validation-for="TipoIdentificacion"></span>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="form-label" for="Identificacion">Identificacion:</label>
+                            <input class="form-control" type="text" name="Identificacion" asp-for="Identificacion"
+                                value="" />
+                            <span class="text-danger pt-2" asp-validation-for="Identificacion"></span>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="form-label" for="Telefono">Telefono:</label>
+                            <input class="form-control" type="text" name="Telefono" asp-for="Telefono" value=""
+                                data-inputmask="'mask': '(+506) 9999-99-99'" />
+                            <span class="text-danger pt-2" asp-validation-for="Telefono"></span>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="form-label" for="Correo">Correo electrónico:</label>
+                            <input class="form-control" type="email" name="Correo" asp-for="Correo" value="" />
+                            <span class="text-danger pt-2" asp-validation-for="Correo"></span>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="form-label" for="Provincia">Provincia</label>
+                            <select class="form-control" id="Provincia" name="Provincia" asp-for="Provincia">
+                            </select>
+                            <span class="text-danger pt-2" asp-validation-for="Provincia"></span>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="form-label" for="Canton">Canton</label>
+                            <select class="form-control" name="Canton" id="Canton" asp-for="Canton">
+                            </select>
+                            <span class="text-danger pt-2" asp-validation-for="Canton"></span>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="form-label" for="Propuesta">Propuesta legislativa</label>
+                            <textarea class="form-control" name="Propuesta" asp-for="Propuesta"></textarea>
+                            <span class="text-danger pt-2" asp-validation-for="Propuesta"></span>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-6">
+                                <button class="btn btn-danger w-100" type="button" class="submit">Cancelar <i
+                                        class="fa-solid fa-trash px-4"></i></button>
+                            </div>
+                            <div class="col-sm-6">
+                                <button class="btn btn-primary w-100" type="submit" class="submit">Enviar <i
+                                        class="fa-solid fa-paper-plane px-4"></i></button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
