@@ -4,10 +4,16 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Instrumento de evaluación de la Universidad Estatal a Distancia">
+        <meta name="author" content="Daniel Guzmán Chaves">
         <title>@ViewData["Title"]</title>
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-utilities.css">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-grid.css">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-reboot.css">
         <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-        <link rel="stylesheet" href="~/RazorTest.styles.css" asp-append-version="true" />
+
+        <link rel="icon" type="image/x-icon" href="~/Logo.png">
     </head>
 
     <body>
@@ -15,7 +21,7 @@
             <nav
                 class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
                 <div class="container">
-                    <a class="navbar-brand" asp-area="" asp-page="/Index">RazorTest</a>
+                    <a class="navbar-brand" asp-area="" asp-page="/Index">Inicio</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false"
                         aria-label="Toggle navigation">
@@ -24,10 +30,8 @@
                     <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                         <ul class="navbar-nav flex-grow-1">
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/RegistroNuevaPropuesta">Registro de
+                                    propuestas legislativas</a>
                             </li>
                         </ul>
                     </div>
@@ -36,20 +40,25 @@
         </header>
         <div class="container">
             <main role="main" class="pb-3">
+            @* Inyecta el body del index.cshtml *@
             @RenderBody()
             </main>
         </div>
 
         <footer class="border-top footer text-muted">
             <div class="container">
-                &copy; 2023 - RazorTest - <a asp-area="" asp-page="/Privacy">Privacy</a>
+                &copy; 2023 - Daniel Guzmán Chaves - III CUATRIMESTRE 2023
             </div>
         </footer>
 
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/jquery-inputmask/jquery.inputmask.js"></script>
+        <script src="~/lib/jquery-inputmask/inputmask.binding.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
-        <script src="~/js/filtro_direccion.js"></script>
+
+        <!-- FontAwesome UI Kit -->
+        <script src='https://kit.fontawesome.com/7a47e984a5.js' crossorigin='anonymous'></script>
     @section scripts{
             <partial name="_ValidationScriptsPartial" />
     }

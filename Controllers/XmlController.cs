@@ -24,6 +24,7 @@ namespace PropuestasLegislativas.Controllers
         {
             if (propuestaLegislativa != null)
             {
+                _logger.LogInformation("Ejecutando endpoint para registro de nueva propuesta legislativa");
                 return ServicioPropuestasLegislativas.registarNuevaPropuestaLegislativa(propuestaLegislativa);
             }
             else
