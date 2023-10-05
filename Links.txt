@@ -1,0 +1,11 @@
+﻿https://stackoverflow.com/questions/69665582/how-to-display-cshtml-from-model-property-asp-net-core-mvc
+https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/types/how-to-convert-a-string-to-a-number
+https://stackoverflow.com/questions/73049078/razor-pages-client-site-validation-not-working
+https://www.learnrazorpages.com/razor-pages/forms
+https://www.learnrazorpages.com/razor-pages/handler-methods
+https://www.learnrazorpages.com/razor-pages/model-binding
+https://www.learnrazorpages.com/razor-pages/validation
+https://www.learnrazorpages.com/razor-pages/tag-helpers/validation-message-tag-helper
+https://www.learnrazorpages.com/razor-pages/ajax
+https://stackoverflow.com/questions/19141347/best-way-to-make-ajax-call-from-webforms-page
+

@@ -1,83 +1,31 @@
 ﻿@page
-@model RazorTest.Pages.IndexPageModelModel
 @{
-    ViewData["Title"] = "Propuestas Legislativas";
+    ViewData["Title"] = "Inicio";
 }
 <section id="formulario">
     <div class="container">
-        <div class="row">
-            <div class="col-sm-8">
-                <form method="post" id="formulario_registro">
-                    <fieldset>
-                        <legend class="my-4">Nueva propuesta legislativa</legend>
-                        <div class="row mb-3">
-                            <label class="form-label" for="Nombre">Nombre:</label>
-                            <input class="form-control" type="text" name="Nombre" asp-for="Nombre" value="" />
-                            <span class="text-danger pt-2" asp-validation-for="Nombre"></span>
-                        </div>
-                        <div class="row mb-3">
-                            <label class="form-label" for="Apellidos">Apellidos:</label>
-                            <input class="form-control" type="text" name="Apellidos" asp-for="Apellidos" value="" />
-                            <span class="text-danger pt-2" asp-validation-for="Apellidos"></span>
-                        </div>
-                        <div class="row mb-3">
-                            <label class="form-label" for="TipoIdentificacion">Tipo de Identificacion</label>
-                            <select class="form-control" name="TipoIdentificacion" asp-for="TipoIdentificacion">
-                                @for (int i = 0; i < Model.TiposIdentificacion.Length; i++)
-                                {
-                                    <option value="@Model.TiposIdentificacion[i]">@Model.TiposIdentificacion[i]
-                                    </option>
-                                }
-                            </select>
-                            <span class="text-danger pt-2" asp-validation-for="TipoIdentificacion"></span>
-                        </div>
-                        <div class="row mb-3">
-                            <label class="form-label" for="Identificacion">Identificacion:</label>
-                            <input class="form-control" type="text" name="Identificacion" asp-for="Identificacion"
-                                value="" />
-                            <span class="text-danger pt-2" asp-validation-for="Identificacion"></span>
-                        </div>
-                        <div class="row mb-3">
-                            <label class="form-label" for="Telefono">Telefono:</label>
-                            <input class="form-control" type="text" name="Telefono" asp-for="Telefono" value=""
-                                data-inputmask="'mask': '(+506) 9999-99-99'" />
-                            <span class="text-danger pt-2" asp-validation-for="Telefono"></span>
-                        </div>
-                        <div class="row mb-3">
-                            <label class="form-label" for="Correo">Correo electrónico:</label>
-                            <input class="form-control" type="email" name="Correo" asp-for="Correo" value="" />
-                            <span class="text-danger pt-2" asp-validation-for="Correo"></span>
-                        </div>
-                        <div class="row mb-3">
-                            <label class="form-label" for="Provincia">Provincia</label>
-                            <select class="form-control" id="Provincia" name="Provincia" asp-for="Provincia">
-                            </select>
-                            <span class="text-danger pt-2" asp-validation-for="Provincia"></span>
-                        </div>
-                        <div class="row mb-3">
-                            <label class="form-label" for="Canton">Canton</label>
-                            <select class="form-control" name="Canton" id="Canton" asp-for="Canton">
-                            </select>
-                            <span class="text-danger pt-2" asp-validation-for="Canton"></span>
-                        </div>
-                        <div class="row mb-3">
-                            <label class="form-label" for="Propuesta">Propuesta legislativa</label>
-                            <textarea class="form-control" name="Propuesta" asp-for="Propuesta"></textarea>
-                            <span class="text-danger pt-2" asp-validation-for="Propuesta"></span>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-sm-6">
-                                <button class="btn btn-danger w-100" type="button" class="submit">Cancelar <i
-                                        class="fa-solid fa-trash px-4"></i></button>
-                            </div>
-                            <div class="col-sm-6">
-                                <button class="btn btn-primary w-100" type="submit" class="submit">Enviar <i
-                                        class="fa-solid fa-paper-plane px-4"></i></button>
-                            </div>
-                        </div>
-                    </fieldset>
-                </form>
-            </div>
+        <div class="row text-center py-4 my-4">
+            <h2>UNIVERSIDAD ESTATAL A DISTANCIA</h2>
+            <h2>VICERRECTORÍA ACADÉMICA</h2>
+            <h2>ESCUELA DE CIENCIAS EXACTAS Y NATURALES</h2>
+            <h2>INGENIERÍA INFORMÁTICA</h2>
+            <h2>CÁTEDRA DESARROLLO DE SOFTWARE</h2>
+        </div>
+        <div class="row text-center py-2">
+            <h3 class="fw-bold">Tarea #1</h3>
+            <h3>Instrumento de evaluación de la Universidad Estatal a Distancia</h3>
+        </div>
+        <div class="row text-center pt-2">
+            <h4><span class="fw-bold">Nombre del curso:</span> Programación avanzada en web - 03101</h4>
+            <h4><span class="fw-bold">Nombre del tutor:</span> Norberth Brunner Agüero</h4>
+        </div>
+        <div class="row text-center py-4">
+            <h4><span class="fw-bold">Nombre completo:</span> Daniel Guzmán Chaves</h4>
+            <h4><span class="fw-bold">Número de cédula:</span> 1-1583-0241</h4>
+        </div>
+        <div class="row text-center py-2 fw-bold">
+            <h5>Centro Universitario de Alajuela</h5>
+            <h5>Semana 3: 03 de octubre – 09 octubre</h5>
         </div>
     </div>
 </section>
