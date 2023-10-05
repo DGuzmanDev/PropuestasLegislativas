@@ -67,7 +67,6 @@ namespace PropuestasLegislativas.Services
             agregarElementoXmlConTexto(textWriter, "tipo_identificacion", propuestaLegislativa.TipoIdentificacion);
             agregarElementoXmlConTexto(textWriter, "provincia", propuestaLegislativa.Provincia);
             agregarElementoXmlConTexto(textWriter, "canton", propuestaLegislativa.Canton);
-            agregarElementoXmlConTexto(textWriter, "distrito", propuestaLegislativa.Distrito);
             agregarElementoXmlConTexto(textWriter, "propuesta", propuestaLegislativa.Propuesta);
 
             textWriter.WriteEndElement();
@@ -99,7 +98,6 @@ namespace PropuestasLegislativas.Services
                 agregarElementoXmlConTexto(doc, propuesta, "tipo_identificacion", propuestaLegislativa.TipoIdentificacion);
                 agregarElementoXmlConTexto(doc, propuesta, "provincia", propuestaLegislativa.Provincia);
                 agregarElementoXmlConTexto(doc, propuesta, "canton", propuestaLegislativa.Canton);
-                agregarElementoXmlConTexto(doc, propuesta, "distrito", propuestaLegislativa.Distrito);
                 agregarElementoXmlConTexto(doc, propuesta, "propuesta", propuestaLegislativa.Propuesta);
 
                 XmlElement propuestas = (XmlElement)elemList[0];
@@ -118,7 +116,6 @@ namespace PropuestasLegislativas.Services
             return propuestaLegislativa != null && propuestaLegislativa.Apellidos != null
                 && propuestaLegislativa.Canton != null
                 && propuestaLegislativa.CorreoElectronico != null
-                && propuestaLegislativa.Distrito != null
                 && propuestaLegislativa.Identificacion != null
                 && propuestaLegislativa.Nombre != null
                 && propuestaLegislativa.Propuesta != null

@@ -22,6 +22,10 @@ namespace PropuestasLegislativas.Controllers
         [Route("write/dynamic")]
         public PropuestaLegislativa saveNewNode([FromBody] PropuestaLegislativa propuestaLegislativa)
         {
+
+            //EL PATH DEL API TENGO QUE CAMBIARLO A OTRA COSA FINAL Y ALGO QUE HAGA MAS SENTIDO
+
+
             if (propuestaLegislativa != null)
             {
                 _logger.LogInformation("Ejecutando endpoint para registro de nueva propuesta legislativa");
