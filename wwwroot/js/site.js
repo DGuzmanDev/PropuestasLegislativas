@@ -109,6 +109,13 @@ const cantones = {
     ]
 }
 
+function animate_feedback(element_id, timeout, show_duration, hide_duration) {
+    $("#" + element_id).show(show_duration);
+    setTimeout(function () {
+        $("#" + element_id).hide(hide_duration);
+    }, timeout);
+}
+
 function llenar_provincias() {
     $.each(provincias, function (i, provincia) {
         $('#Provincia').append($('<option>', {
@@ -137,8 +144,75 @@ function llenar_cantones(provincia) {
     });
 }
 
+function enviar_formulario() {
+    var propuesta_legislativa = {
+        "nombre": $("#Nombre").val(),
+        "apellidos": $("#Apellidos").val(),
+        "identificacion": $("#Identificacion").val(),
+        "provincia": $("#Provincia").val(),
+        "canton": $("#Canton").val(),
+        "propuesta": $("#Propuesta").val(),
+        "tipoIdentificacion": $("#TipoIdentificacion").val(),
+        "correoElectronico": $("#Correo").val(),
+        "telefono": $("#Telefono").val()
+    }
+
+    $.ajax({
+        type: "POST",
+        url: "/api/Xml/write/dynamic",
+        data: JSON.stringify(propuesta_legislativa),
+        success: function (data, status) {
+            window.location.replace("/Success");
+        },
+        error: function (data, status) {
+            console.log('HTTP request error, status' + status);
+            window.location.replace("/Error");
+        },
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+    });
+}
+
+// function validar_campos_entrada(){
+//     var entrada_valida = true;
+
+//     entrada_valida = $()
+// }
+
+function registrar_evento_formulario() {
+    $("#enviar").on('click', function (event) {
+        event.preventDefault();
+
+        var validForms = true;
+        var form = $(".needs-validation")[0];
+        $(form).addClass("was-validated");
+
+        if (form.checkValidity() === false) {
+            validForms = false;
+        }
+
+        if (!validForms) {
+            animate_feedback("error_formulario", 3000, 500, 500);
+        } else {
+            // aqui seria validar los formatos, igual en el backend, tengo que validar los formatos.
+
+            enviar_formulario();
+            $(form).removeClass("was-validated");
+            form.reset();
+        }
+    });
+}
+
+function registrar_evento_borrar() {
+    $("#cancelar").on('click', function (event) {
+        $("#formulario_registro")[0].reset();
+    });
+}
+
 $(document).ready(function () {
     console.log('site.js JavaScript - Daniel Guzman Chaves - 03101 – Programación avanzada en web - UNED IIIQ 2023');
     $(":input").inputmask();
     llenar_provincias();
+    registrar_evento_formulario();
+    registrar_evento_borrar();
 });

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -11,9 +7,6 @@ namespace PropuestasLegislativas.Pages
     [BindProperties]
     public class RegistroNuevaPropuestaModel : PageModel
     {
-        //aqui idealmente deberia hacerse el model en su lugar?
-
-
         [Required(ErrorMessage = "El nombre es requerido")]
         [MinLength(3, ErrorMessage = "El nombre del empresa debe ser al menos de 3 caracteres")]
         public String? Nombre { get; set; }
@@ -30,6 +23,7 @@ namespace PropuestasLegislativas.Pages
         //Esto es en base al tipo de identificacion
         [Required(ErrorMessage = "La identificación es requerida")]
         [MinLength(10, ErrorMessage = "La identificación debe tener al menos 10 caracteres")]
+        [MaxLength(10, ErrorMessage = "La identificación debe tener máximo 12 caracteres")]
         public String? Identificacion { get; set; }
 
         [Required(ErrorMessage = "El número de teléfono es requerido")]
