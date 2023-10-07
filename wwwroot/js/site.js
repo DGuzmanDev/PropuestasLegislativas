@@ -1,4 +1,9 @@
-﻿const provincias = [
+﻿var tipo_identificacion_masks = {
+    "Nacional": "9-1999-9999",
+    "DIMEX": "999999999999"
+};
+
+const provincias = [
     "San José",
     "Alajuela",
     "Cartago",
@@ -144,6 +149,14 @@ function llenar_cantones(provincia) {
     });
 }
 
+function registrar_evento_tipo_id() {
+    $("#TipoIdentificacion").on('change', function (event) {
+        var tipoIdentificacion = this.value;
+        $("#Identificacion").attr("data-inputmask", "'mask': '" + tipo_identificacion_masks[tipoIdentificacion] + "'");
+        $("#Identificacion").inputmask();
+    });
+}
+
 function enviar_formulario() {
     var propuesta_legislativa = {
         "nombre": $("#Nombre").val(),
@@ -173,12 +186,6 @@ function enviar_formulario() {
     });
 }
 
-// function validar_campos_entrada(){
-//     var entrada_valida = true;
-
-//     entrada_valida = $()
-// }
-
 function registrar_evento_formulario() {
     $("#enviar").on('click', function (event) {
         event.preventDefault();
@@ -194,7 +201,7 @@ function registrar_evento_formulario() {
         if (!validForms) {
             animate_feedback("error_formulario", 3000, 500, 500);
         } else {
-            // aqui seria validar los formatos, igual en el backend, tengo que validar los formatos.
+            // en el FE solo validar que el trim no me muestra vacio, en el BE puedo validar el regex
 
             enviar_formulario();
             $(form).removeClass("was-validated");
@@ -213,6 +220,7 @@ $(document).ready(function () {
     console.log('site.js JavaScript - Daniel Guzman Chaves - 03101 – Programación avanzada en web - UNED IIIQ 2023');
     $(":input").inputmask();
     llenar_provincias();
+    registrar_evento_tipo_id();
     registrar_evento_formulario();
     registrar_evento_borrar();
 });
