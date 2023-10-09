@@ -20,10 +20,7 @@ namespace PropuestasLegislativas.Pages
         [Required(ErrorMessage = "El tipo de identificacion es requerido")]
         public String? TipoIdentificacion { get; set; }
 
-        //Esto es en base al tipo de identificacion
         [Required(ErrorMessage = "La identificación es requerida")]
-        [MinLength(10, ErrorMessage = "La identificación debe tener al menos 10 caracteres")]
-        [MaxLength(10, ErrorMessage = "La identificación debe tener máximo 12 caracteres")]
         public String? Identificacion { get; set; }
 
         [Required(ErrorMessage = "El número de teléfono es requerido")]

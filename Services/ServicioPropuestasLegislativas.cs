@@ -26,16 +26,14 @@ namespace PropuestasLegislativas.Services
         {
             if (validarPropuestaLegislativa(propuestaLegislativa))
             {
-                if (!System.IO.File.Exists(fileName))
+                if (!File.Exists(fileName))
                 {
                     Console.WriteLine("El archivo no existe aun");
-
                     crearNuevoArchivoXml(propuestaLegislativa);
                 }
                 else
                 {
                     Console.WriteLine("El archivo ya existe");
-
                     agregarPropuestaLegislativa(propuestaLegislativa);
                 }
 
@@ -113,7 +111,7 @@ namespace PropuestasLegislativas.Services
 
         private bool validarPropuestaLegislativa(PropuestaLegislativa propuestaLegislativa)
         {
-            return propuestaLegislativa != null && propuestaLegislativa.Apellidos != null
+            bool check_de_integridad = propuestaLegislativa != null && propuestaLegislativa.Apellidos != null
                 && propuestaLegislativa.Canton != null
                 && propuestaLegislativa.CorreoElectronico != null
                 && propuestaLegislativa.Identificacion != null
@@ -122,6 +120,11 @@ namespace PropuestasLegislativas.Services
                 && propuestaLegislativa.Provincia != null
                 && propuestaLegislativa.Telefono != null
                 && propuestaLegislativa.TipoIdentificacion != null;
+
+            bool check_formato_id = validarFormatoIdentificacion(propuestaLegislativa.Identificacion, propuestaLegislativa.TipoIdentificacion);
+            bool check_formato_tel = validarFormatoTelefono(propuestaLegislativa.Telefono);
+
+            return check_de_integridad && check_formato_id && check_formato_tel;
         }
 
         private void agregarElementoXmlConTexto(XmlTextWriter textWriter, string name, string text)
@@ -139,11 +142,17 @@ namespace PropuestasLegislativas.Services
             padre.AppendChild(element);
         }
 
-        private bool validarFormatoIdentificacion(String identificacion, String tipoIdentificacion)
+        private bool validarFormatoIdentificacion(string identificacion, string tipoIdentificacion)
         {
-            string regexFormat = tipoIdentificacion == "nacional" ? "[0-9]+-([0-9]{4})+-([0-9]{4})" : "[0-9]{12}";
+            string regexFormat = tipoIdentificacion == "Nacional" ? "[0-9]+-([0-9]{4})+-([0-9]{4})" : "[0-9]{12}";
             Regex regexIdentificacion = new Regex(regexFormat, RegexOptions.IgnoreCase);
             return regexIdentificacion.IsMatch(identificacion);
+        }
+
+        private bool validarFormatoTelefono(string telefono)
+        {
+            Regex regexIdentificacion = new Regex("\\(\\+506\\) [0-9]{4}-[0-9]{2}-[0-9]{2}", RegexOptions.IgnoreCase);
+            return regexIdentificacion.IsMatch(telefono);
         }
     }
 }

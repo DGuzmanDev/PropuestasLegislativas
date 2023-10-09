@@ -1,4 +1,9 @@
-﻿const provincias = [
+﻿var tipo_identificacion_masks = {
+    "Nacional": "9-1999-9999",
+    "DIMEX": "999999999999"
+};
+
+const provincias = [
     "San José",
     "Alajuela",
     "Cartago",
@@ -144,6 +149,14 @@ function llenar_cantones(provincia) {
     });
 }
 
+function registrar_evento_tipo_id() {
+    $("#TipoIdentificacion").on('change', function (event) {
+        var tipoIdentificacion = this.value;
+        $("#Identificacion").attr("data-inputmask", "'mask': '" + tipo_identificacion_masks[tipoIdentificacion] + "'");
+        $("#Identificacion").inputmask();
+    });
+}
+
 function enviar_formulario() {
     var propuesta_legislativa = {
         "nombre": $("#Nombre").val(),
@@ -173,11 +186,49 @@ function enviar_formulario() {
     });
 }
 
-// function validar_campos_entrada(){
-//     var entrada_valida = true;
+function validar_telefono() {
+    var isValid = false;
+    var tel = $("#Telefono").val();
 
-//     entrada_valida = $()
-// }
+    if (tel.length < 17 || tel.includes("_")) {
+        $("#Telefono").addClass("input-invalid");
+        $("#error_telefono").show();
+    } else {
+        $("#Telefono").removeClass("input-invalid");
+        $("#error_telefono").hide();
+        isValid = true;
+    }
+
+    return isValid;
+}
+
+function registrar_evento_telefono() {
+    $("#Telefono").on('input', function (e) {
+        validar_telefono();
+    });
+}
+
+function validar_identificacion() {
+    var isValid = false;
+    var identificacion = $("#Identificacion").val();
+
+    if (identificacion.length < 11 || identificacion.includes("_")) {
+        $("#Identificacion").addClass("input-invalid");
+        $("#error_identificacion").show();
+    } else {
+        $("#Identificacion").removeClass("input-invalid");
+        $("#error_identificacion").hide();
+        isValid = true;
+    }
+
+    return isValid;
+}
+
+function registrar_evento_identificacion() {
+    $("#Identificacion").on('input', function (e) {
+        validar_identificacion();
+    });
+}
 
 function registrar_evento_formulario() {
     $("#enviar").on('click', function (event) {
@@ -191,11 +242,9 @@ function registrar_evento_formulario() {
             validForms = false;
         }
 
-        if (!validForms) {
+        if (!validForms || !validar_identificacion() || !validar_telefono()) {
             animate_feedback("error_formulario", 3000, 500, 500);
         } else {
-            // aqui seria validar los formatos, igual en el backend, tengo que validar los formatos.
-
             enviar_formulario();
             $(form).removeClass("was-validated");
             form.reset();
@@ -213,6 +262,9 @@ $(document).ready(function () {
     console.log('site.js JavaScript - Daniel Guzman Chaves - 03101 – Programación avanzada en web - UNED IIIQ 2023');
     $(":input").inputmask();
     llenar_provincias();
-    registrar_evento_formulario();
     registrar_evento_borrar();
+    registrar_evento_tipo_id();
+    registrar_evento_telefono();
+    registrar_evento_formulario();
+    registrar_evento_identificacion();
 });

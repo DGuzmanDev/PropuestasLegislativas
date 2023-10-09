@@ -1,5 +1,4 @@
 ﻿using System;
-using PropuestasLegislativas.Enums;
 
 namespace PropuestasLegislativas.Models;
 
@@ -14,7 +13,6 @@ public class PropuestaLegislativa
     public String? TipoIdentificacion { get; set; }
     public String? CorreoElectronico { get; set; }
     public String? Telefono { get; set; }
-    //public TipoIdentificacionEnumeration tipoIdentificacion;
 
     public PropuestaLegislativa(String nombre, String apellidos, String identificacion, String provincia,
         String canton, String propuesta, String tipoIdentificacion)
