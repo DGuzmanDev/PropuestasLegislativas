@@ -144,7 +144,7 @@ namespace PropuestasLegislativas.Services
 
         private bool validarFormatoIdentificacion(string identificacion, string tipoIdentificacion)
         {
-            string regexFormat = tipoIdentificacion == "nacional" ? "[0-9]+-([0-9]{4})+-([0-9]{4})" : "[0-9]{12}";
+            string regexFormat = tipoIdentificacion == "Nacional" ? "[0-9]+-([0-9]{4})+-([0-9]{4})" : "[0-9]{12}";
             Regex regexIdentificacion = new Regex(regexFormat, RegexOptions.IgnoreCase);
             return regexIdentificacion.IsMatch(identificacion);
         }
