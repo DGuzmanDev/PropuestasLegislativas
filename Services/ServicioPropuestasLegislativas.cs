@@ -121,10 +121,10 @@ namespace PropuestasLegislativas.Services
                 && propuestaLegislativa.Telefono != null
                 && propuestaLegislativa.TipoIdentificacion != null;
 
-            bool check_de_formato = validarFormatoIdentificacion(propuestaLegislativa.Identificacion, propuestaLegislativa.TipoIdentificacion)
-                && validarFormatoTelefono(propuestaLegislativa.Telefono);
+            bool check_formato_id = validarFormatoIdentificacion(propuestaLegislativa.Identificacion, propuestaLegislativa.TipoIdentificacion);
+            bool check_formato_tel = validarFormatoTelefono(propuestaLegislativa.Telefono);
 
-            return check_de_integridad && check_de_formato;
+            return check_de_integridad && check_formato_id && check_formato_tel;
         }
 
         private void agregarElementoXmlConTexto(XmlTextWriter textWriter, string name, string text)
@@ -151,7 +151,7 @@ namespace PropuestasLegislativas.Services
 
         private bool validarFormatoTelefono(string telefono)
         {
-            Regex regexIdentificacion = new Regex("\\+\\(506\\) [0-9]{4}-[0-9]{2}-[0-9]{2}", RegexOptions.IgnoreCase);
+            Regex regexIdentificacion = new Regex("\\(\\+506\\) [0-9]{4}-[0-9]{2}-[0-9]{2}", RegexOptions.IgnoreCase);
             return regexIdentificacion.IsMatch(telefono);
         }
     }

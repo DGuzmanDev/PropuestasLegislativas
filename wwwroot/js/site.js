@@ -259,7 +259,6 @@ function registrar_evento_borrar() {
 }
 
 $(document).ready(function () {
-    alert('Evento');
     console.log('site.js JavaScript - Daniel Guzman Chaves - 03101 – Programación avanzada en web - UNED IIIQ 2023');
     $(":input").inputmask();
     llenar_provincias();
