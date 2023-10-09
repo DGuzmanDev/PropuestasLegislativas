@@ -186,6 +186,50 @@ function enviar_formulario() {
     });
 }
 
+function validar_telefono() {
+    var isValid = false;
+    var tel = $("#Telefono").val();
+
+    if (tel.length < 17 || tel.includes("_")) {
+        $("#Telefono").addClass("input-invalid");
+        $("#error_telefono").show();
+    } else {
+        $("#Telefono").removeClass("input-invalid");
+        $("#error_telefono").hide();
+        isValid = true;
+    }
+
+    return isValid;
+}
+
+function registrar_evento_telefono() {
+    $("#Telefono").on('input', function (e) {
+        validar_telefono();
+    });
+}
+
+function validar_identificacion() {
+    var isValid = false;
+    var identificacion = $("#Identificacion").val();
+
+    if (identificacion.length < 11 || identificacion.includes("_")) {
+        $("#Identificacion").addClass("input-invalid");
+        $("#error_telefono").show();
+    } else {
+        $("#Identificacion").removeClass("input-invalid");
+        $("#error_telefono").hide();
+        isValid = true;
+    }
+
+    return isValid;
+}
+
+function registrar_evento_identificacion() {
+    $("#Identificacion").on('input', function (e) {
+        validar_identificacion();
+    });
+}
+
 function registrar_evento_formulario() {
     $("#enviar").on('click', function (event) {
         event.preventDefault();
@@ -198,11 +242,9 @@ function registrar_evento_formulario() {
             validForms = false;
         }
 
-        if (!validForms) {
+        if (!validForms || !validar_identificacion() || !validar_telefono()) {
             animate_feedback("error_formulario", 3000, 500, 500);
         } else {
-            // en el FE solo validar que el trim no me muestra vacio, en el BE puedo validar el regex
-
             enviar_formulario();
             $(form).removeClass("was-validated");
             form.reset();
@@ -221,6 +263,7 @@ $(document).ready(function () {
     $(":input").inputmask();
     llenar_provincias();
     registrar_evento_tipo_id();
+    registrar_evento_telefono();
     registrar_evento_formulario();
     registrar_evento_borrar();
 });

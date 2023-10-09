@@ -47,7 +47,7 @@
                             <label class="form-label" for="Identificacion">Identificacion:</label>
                             <input class="form-control" type="text" name="Identificacion" id="Identificacion"
                                 asp-for="Identificacion" value="" data-inputmask="'mask': '9-1999-9999'" required />
-                            <div class="invalid-feedback" id="error_tipo_identificacion">
+                            <div class="invalid-feedback" id="error_identificacion">
                                 El tipo de identificacion es requerido
                             </div>
                         </div>
@@ -55,7 +55,7 @@
                             <label class="form-label" for="Telefono">Telefono:</label>
                             <input class="form-control" type="text" name="Telefono" id="Telefono" asp-for="Telefono"
                                 value="" data-inputmask="'mask': '(+506) 9999-99-99'" required />
-                            <div class="invalid-feedback" id="error_tipo_identificacion">
+                            <div class="invalid-feedback" id="error_telefono">
                                 El número de teléfono es requerido
                             </div>
                         </div>
@@ -63,7 +63,7 @@
                             <label class="form-label" for="Correo">Correo electrónico:</label>
                             <input class="form-control" type="email" name="Correo" id="Correo" asp-for="Correo" value=""
                                 required />
-                            <div class="invalid-feedback" id="error_tipo_identificacion">
+                            <div class="invalid-feedback" id="error_correo">
                                 El correo electrónico es requerido
                             </div>
                         </div>
@@ -71,7 +71,7 @@
                             <label class="form-label" for="Provincia">Provincia</label>
                             <select class="form-control" name="Provincia" id="Provincia" asp-for="Provincia" required>
                             </select>
-                            <div class="invalid-feedback" id="error_tipo_identificacion">
+                            <div class="invalid-feedback" id="error_provincia">
                                 La provincia es requerida
                             </div>
                         </div>
@@ -79,7 +79,7 @@
                             <label class="form-label" for="Canton">Canton</label>
                             <select class="form-control" name="Canton" id="Canton" asp-for="Canton" required>
                             </select>
-                            <div class="invalid-feedback" id="error_tipo_identificacion">
+                            <div class="invalid-feedback" id="error_canton">
                                 El cantón es requerido
                             </div>
                         </div>
@@ -87,13 +87,13 @@
                             <label class="form-label" for="Propuesta">Propuesta legislativa</label>
                             <textarea class="form-control" name="Propuesta" id="Propuesta" asp-for="Propuesta"
                                 required></textarea>
-                            <div class="invalid-feedback" id="error_tipo_identificacion">
+                            <div class="invalid-feedback" id="error_propuesta">
                                 La propuesta es requerida
                             </div>
                         </div>
                         <div class="invalid-feedback" id="error_formulario">
                             <div class="d-flex justify-content-center my-4">
-                                Por favor complete la información requerida antes de continuar
+                                Por favor revise el formlario y complete la información requerida antes de continuar
                             </div>
                         </div>
                         <div class="row mb-3">
