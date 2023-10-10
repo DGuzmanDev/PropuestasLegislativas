@@ -6,26 +6,22 @@ using PropuestasLegislativas.Services;
 namespace PropuestasLegislativas.Controllers
 {
     [Route("api/[controller]")]
-    public class XmlController : ControllerBase
+    public class PropuestaLegislativaController : ControllerBase
     {
-        private readonly ILogger<XmlController> _logger;
+        private readonly ILogger<PropuestaLegislativaController> _logger;
         private IServicioPropuestasLegislativas ServicioPropuestasLegislativas;
 
 
-        public XmlController(ILogger<XmlController> logger)
+        public PropuestaLegislativaController(ILogger<PropuestaLegislativaController> logger)
         {
             _logger = logger;
             ServicioPropuestasLegislativas = new ServicioPropuestasLegislativas();
         }
 
         [HttpPost]
-        [Route("write/dynamic")]
+        [Route("guardar")]
         public PropuestaLegislativa saveNewNode([FromBody] PropuestaLegislativa propuestaLegislativa)
         {
-
-            //EL PATH DEL API TENGO QUE CAMBIARLO A OTRA COSA FINAL Y ALGO QUE HAGA MAS SENTIDO
-
-
             if (propuestaLegislativa != null)
             {
                 _logger.LogInformation("Ejecutando endpoint para registro de nueva propuesta legislativa");

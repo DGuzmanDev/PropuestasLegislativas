@@ -172,7 +172,7 @@ function enviar_formulario() {
 
     $.ajax({
         type: "POST",
-        url: "/api/Xml/write/dynamic",
+        url: "/api/PropuestaLegislativa/guardar",
         data: JSON.stringify(propuesta_legislativa),
         success: function (data, status) {
             window.location.replace("/Success");
